@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model Task4.ViewModels.NewGameModel
+@Html.ValidationSummary()
+<div class="text-center">
+    <h2>Select game</h2>
+    <input type="text" id="filter" laceholder="Enter tag" onkeyup="tableSearch()">
+    <section id="menu">
+        @foreach (var item in ViewBag.Games)
+        {
+            <gameCell class="gameCell">
+                <h2>@item.Name</h2>
+                <p class="tag">@item.Tags</p>
+                <a id="join" name="@item.Name" class="btn btn-primary" asp-route-name="@item.Name" asp-area="" asp-controller="Home" asp-action="JoinTheGame">Go</a>
+            </gameCell>
+        }
+    </section>
+    <h2>Создайте игру</h2>
+    <form method="post" asp-controller="Home" asp-action="CreateNewGame">
+        <div class="form-group">
+            <label asp-for="Name">Game name</label>
+            <input id="newgame" type="text" asp-for="Name" class="form-control" placeholder="Enter game name">
+            <span asp-validation-for="Name" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Tags">Enter tags</label>
+            <input maxlength="30" asp-for="Tags" class="form-control" placeholder="#tags">
+            <span asp-validation-for="Tags" />
+        </div>
+        <button id="create" value="Create" type="submit" class="btn btn-primary">Создать</button>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="~/js/Index.js"></script>
+
