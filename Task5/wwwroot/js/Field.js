@@ -33,13 +33,13 @@ hubConnection.on("CheckOpp", function () {
 
 function result(modal, typeOfMove) {
     if (checkWinner() == typeOfMove) {
-        document.getElementById("winner").textContent = "Вы выиграли))";
+        document.getElementById("winner").textContent = "Вы выиграли";
         modal.style.display = "block";
     } else if (checkWinner() == (typeOfMove == "x" ? "o" : "x")) {
-        document.getElementById("winner").textContent = "Вы проиграли((";
+        document.getElementById("winner").textContent = "Вы проиграли";
         modal.style.display = "block";
     } else if (checkDraw()) {
-        document.getElementById("winner").textContent = "Ничья))";
+        document.getElementById("winner").textContent = "Ничья";
         modal.style.display = "block";
     }
 }

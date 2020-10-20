@@ -12537,11 +12537,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Program Files\\Itransition\\Task4 - копия\\Task4\\Task5.csproj",
+      "projectUniqueName": "E:\\Program Files\\Itransition\\Task4 - копия\\Task5\\Task5.csproj",
       "projectName": "Task5",
-      "projectPath": "E:\\Program Files\\Itransition\\Task4 - копия\\Task4\\Task5.csproj",
+      "projectPath": "E:\\Program Files\\Itransition\\Task4 - копия\\Task5\\Task5.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "E:\\Program Files\\Itransition\\Task4 - копия\\Task4\\obj\\",
+      "outputPath": "E:\\Program Files\\Itransition\\Task4 - копия\\Task5\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
