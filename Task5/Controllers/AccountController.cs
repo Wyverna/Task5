@@ -63,7 +63,7 @@ namespace Task4.Controllers
                 {
                     db.Users.Add(new User { Email = model.Email, Password = model.Password, Name = model.Name });
                     await db.SaveChangesAsync();
-                    await Authenticate(model.Email);
+                    await Authenticate(model.Name);
                     return RedirectToAction("Index", "Home");
                 }
                 else
