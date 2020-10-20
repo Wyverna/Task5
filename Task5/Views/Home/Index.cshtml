@@ -5,7 +5,7 @@
 @Html.ValidationSummary()
 <div class="text-center">
     <h2>Select game</h2>
-    <input type="text" id="filter" laceholder="Enter tag" onkeyup="tableSearch()">
+    <input name="tagsFilter" id="filter" placeholder="Enter tag" onkeyup="tableSearch()">
     <section id="menu">
         @foreach (var item in ViewBag.Games)
         {
@@ -25,13 +25,37 @@
         </div>
         <div class="form-group">
             <label asp-for="Tags">Enter tags</label>
-            <input maxlength="30" asp-for="Tags" class="form-control" placeholder="#tags">
+            <input name="newtags" id="newtag"   placeholder="#tags" >
+            <input id="hiddenTags" name="tags" class="form-control" maxlength="30" type="hidden" asp-for="Tags"/>
             <span asp-validation-for="Tags" />
         </div>
-        <button id="create" value="Create" type="submit" class="btn btn-primary">Создать</button>
+        <button id="create" value="Create" type="submit" class="btn btn-primary">Create</button>
     </form>
 </div>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
 <script src="~/js/Index.js"></script>
+<script src="~/js/tagify.min.js"></script>
+<script type="text/javascript">
+    var input = document.querySelector('input[name="tagsFilter"]'), input2 = document.querySelector('input[name="newtags"]')
 
+            tagify2 = new Tagify(input2, {
+                maxTags: 10,
+                dropdown: {
+                    maxItems: 20,
+                    classname: "tags-look",
+                    enabled: 0,
+                    closeOnSelect: false
+                }
+        })
+    $('form').submit(function () {
+        var str="", array = JSON.parse($('#newtag').val());
+        array.forEach(item=>
+        {
+            str += item.value+",";  
+        })
+        str = str.substring(0,(str.length - 1));
+        $('#hiddenTags').val(str);
+        return true;
+    });
+</script>

@@ -21,18 +21,18 @@ namespace Task4.Controllers
 
         [Produces("application/json")]
         [HttpGet("search")]
-        public async Task<IActionResult> Search()
+        public IActionResult Search()
         {            
             string term = HttpContext.Request.Query["term"].ToString();
             var Tags = db.Games.Where(p => p.Tags.Contains(term)).Select(p => p.Tags).ToList();            
-            return Ok(SplitBy(Tags, term));            
+            return Ok(SplitBy(Tags,term));            
         }
         public List<string> SplitBy(List<string> Tags, string term)
         {            
             List<string> tags = new List<string>();
             foreach(string s in Tags)
             {
-                var TagsInGame = s.Split("#").ToList();
+                var TagsInGame = s.Split(",").ToList();
                 foreach(string tag in TagsInGame)
                 {
                     if (tag.ToLower().Contains(term.ToLower())){

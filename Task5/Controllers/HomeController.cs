@@ -61,12 +61,12 @@ namespace Task4.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult> JoinTheGame(string name)
+        public IActionResult JoinTheGame(string name)
         {
             Game game = db.Games.FirstOrDefault(u => u.Name == name);
             if (game.Player1 == null || game.Player2 == null)
             {                
-                return AddPlayer(game, false);
+                    return AddPlayer(game, false);
             }
             else
             {
